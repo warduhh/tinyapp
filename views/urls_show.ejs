@@ -10,37 +10,14 @@
     />
     <title>URL - TinyApp Example</title>
   </head>
-  
-  <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-success">
-      <a class="navbar-brand" href="/urls">TinyApp</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link" href="/urls">My URLs</a>
-          <a class="nav-item nav-link" href="/urls/new">Create New URL</a>
-        </div>
-      </div>
-    </nav>
-  </header>
-
   <body>
+    <%- include('partials/_header') %>
     <div class="card text-center">
       <div class="card-header"></div>
       <div class="card-body">
         <h5 class="card-title">TinyURL for: <%= longURL %></h5>
         <p class="card-text">
-          Short URL ID: <a href="/u/<%= id %>"><%= id %></a>
+          Short URL ID: <a href="<%= longURL %>"><%= id %></a>
         </p>
       </div>
       <div class="card-footer text-muted"></div>
@@ -61,7 +38,11 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <form method="POST" action="/urls/<%= id %>">
+        <label for="longURL">Long URL:</label>
+        <input type="text" id="longURL" name="longURL" value="<%= longURL %>">
+        <button type="submit">Update URL</button>
+      </form>
+
   </body>
 </html>
-
-
