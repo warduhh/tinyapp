@@ -140,3 +140,20 @@ app.get('/dashboard', (req, res) => {
   res.render('dashboard', { username });
 });
 
+//renders register page 
+app.get("/register", (req, res) => {
+  if (req.session.user_id) {
+    return res.redirect("/urls");
+  }
+  const templateVars = { user: users[req.session.user_id] };
+  return res.render("urls_register", templateVars);
+});
+
+//renders register page 
+app.get("/register", (req, res) => {
+  if (req.session.user_id) {
+    return res.redirect("/urls");
+  }
+  const templateVars = { user: users[req.session.user_id] };
+  return res.render("urls_register", templateVars);
+});
